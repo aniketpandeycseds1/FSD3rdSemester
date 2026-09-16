@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Management System</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+    margin:20px;
+}
+
+header{
+    background:#003366;
+    color:white;
+    padding:15px;
+    text-align:center;
+}
+
+.container{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.card{
+    width:220px;
+    background:white;
+    border-radius:10px;
+    padding:15px;
+    text-align:center;
+    box-shadow:0px 0px 10px gray;
+}
+
+.card img{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background:#ddd;
+}
+
+form{
+    margin-top:20px;
+}
+
+input{
+    padding:10px;
+    margin:5px;
+}
+
+button{
+    padding:10px 20px;
+    background:green;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+<h1>ABES Engineering College</h1>
+</header>
+
+<br>
+
+<input type="text" id="search" placeholder="Search Student by Name">
+
+<h2>Add Student</h2>
+
+<form id="studentForm">
+
+<input type="text" id="name" placeholder="Student Name" required>
+
+<input type="text" id="roll" placeholder="Roll No" required>
+
+<input type="text" id="branch" placeholder="Branch" required>
+
+<input type="text" id="year" placeholder="Year" required>
+
+<input type="text" id="section" placeholder="Section" required>
+
+<button type="submit">Add Student</button>
+
+</form>
+
+<div class="container">
+
+<div class="card">
+<img src="" alt="student">
+<h2>Ayush Gupta</h2>
+<p>Roll No:241</p>
+<p>Branch:CSE DS</p>
+<p>Year:2nd Year</p>
+<p>Section:A</p>
+</div>
+
+<div class="card">
+<img src="" alt="student">
+<h2>Arun Pandey</h2>
+<p>Roll No:242</p>
+<p>Branch:CSE DS</p>
+<p>Year:2nd Year</p>
+<p>Section:A</p>
+</div>
+
+<div class="card">
+<img src="" alt="student">
+<h2>Aman Verma</h2>
+<p>Roll No:243</p>
+<p>Branch:CSE</p>
+<p>Year:2nd Year</p>
+<p>Section:A</p>
+</div>
+
+</div>
+
+<script>
+
+// Add Student
+
+const form=document.getElementById("studentForm");
+const container=document.querySelector(".container");
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let name=document.getElementById("name").value;
+let roll=document.getElementById("roll").value;
+let branch=document.getElementById("branch").value;
+let year=document.getElementById("year").value;
+let section=document.getElementById("section").value;
+
+let card=document.createElement("div");
+
+card.className="card";
+
+card.innerHTML=`
+<img src="" alt="student">
+<h2>${name}</h2>
+<p>Roll No:${roll}</p>
+<p>Branch:${branch}</p>
+<p>Year:${year}</p>
+<p>Section:${section}</p>
+`;
+
+container.appendChild(card);
+
+form.reset();
+
+});
+
+
+// Search Student
+
+document.getElementById("search").addEventListener("keyup",function(){
+
+let value=this.value.toLowerCase();
+
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(function(card){
+
+let name=card.querySelector("h2").innerText.toLowerCase();
+
+if(name.includes(value))
+{
+card.style.display="block";
+}
+else
+{
+card.style.display="none";
+}
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

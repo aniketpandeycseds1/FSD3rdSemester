@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="form">
+        <h1 id="h1">Keyboard Event</h1>
+
+        <p>onkeydown</p>
+        <input type="text" onkeydown="alert(this.value);">
+
+        <p>onkeyup</p>
+        <input type="text" onkeyup="alert(this.value);">
+
+        <p>onkeypress</p>
+        <input type="text" onkeypress="alert(this.value);">
+    </div>
+    <form>
+    <label for="keydown">onkeydown:</label>
+    <input type="text" id="keydown" onkeydown="alert(this.value);">
+
+    <label for="keyup">onkeyup:</label>
+    <input type="text" id="keyup" onkeyup="alert(this.value);">
+
+    <label for="keypress">onkeypress:</label>
+    <input type="text" id="keypress" onkeypress="alert(this.value);">   
+    </form>
+    <script>
+        function showalert(eventType) {
+            alert('key pressed: ' + eventType);
+        }
+    </script>
+</body>
+</html>
